@@ -19,7 +19,15 @@ if (['cigeo.fr', 'www.cigeo.fr'].includes(window.location.hostname)) {
   script.crossOrigin = 'anonymous';
   document.head.append(script);
 
-  document.querySelectorAll('ins.adsbygoogle').forEach(() => {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  });
+  const placements = [...document.querySelectorAll('ins.adsbygoogle')];
+  const requested = new WeakSet();
+  function requestVisiblePlacements() {
+    for (const placement of placements) {
+      if (requested.has(placement) || placement.getBoundingClientRect().width === 0) continue;
+      requested.add(placement);
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    }
+  }
+  requestVisiblePlacements();
+  window.addEventListener('resize', requestVisiblePlacements, { passive: true });
 }
