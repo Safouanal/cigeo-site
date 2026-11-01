@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "googleEligible": false,
+  "googleEligibilityCheckedOn": "2026-11-01",
+  "googleUnavailableReason": "site-under-review",
+  "placements": {
+    "home-top": {
+      "variants": [
+        {"id": "32040685", "responsive": true, "minWidth": 250}
+      ]
+    },
+    "guide-top": {
+      "variants": [
+        {"id": "32040685", "responsive": true, "minWidth": 250}
+      ]
+    }
+  }
+}

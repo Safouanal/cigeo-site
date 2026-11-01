@@ -1,3 +1,5 @@
+import { initializeDisplayFallback, waitForGoogleConsentFlow } from './display-fallback.js';
+
 // Only the registered public domain may request real advertisements.
 if (['cigeo.fr', 'www.cigeo.fr'].includes(window.location.hostname)) {
   window.googlefc = window.googlefc || {};
@@ -17,6 +19,7 @@ if (['cigeo.fr', 'www.cigeo.fr'].includes(window.location.hostname)) {
   const recovery = document.createElement('script');
   recovery.async = true;
   recovery.src = 'https://fundingchoicesmessages.google.com/i/pub-4112623749902905?ers=1';
+  const googleConsentFlow = waitForGoogleConsentFlow(window, recovery);
   document.head.append(recovery);
   if (!window.frames['googlefcPresent']) {
     const signal = document.createElement('iframe');
@@ -46,4 +49,5 @@ if (['cigeo.fr', 'www.cigeo.fr'].includes(window.location.hostname)) {
   }
   requestVisiblePlacements();
   window.addEventListener('resize', requestVisiblePlacements, { passive: true });
+  initializeDisplayFallback({ googleConsentFlow }).catch(() => {});
 }
