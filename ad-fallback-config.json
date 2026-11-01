@@ -9,9 +9,34 @@
         {"id": "32040685", "responsive": true, "minWidth": 250}
       ]
     },
+    "home-left": {
+      "variants": [
+        {"id": "32040498", "width": 300, "height": 250},
+        {"id": "32040499", "width": 160, "height": 300}
+      ]
+    },
+    "home-right": {
+      "variants": [
+        {"id": "32040686", "width": 160, "height": 600}
+      ]
+    },
+    "home-bottom": {
+      "variants": [
+        {"id": "32040501", "width": 728, "height": 90},
+        {"id": "32040497", "width": 468, "height": 60},
+        {"id": "32040500", "width": 320, "height": 50}
+      ]
+    },
     "guide-top": {
       "variants": [
         {"id": "32040685", "responsive": true, "minWidth": 250}
+      ]
+    },
+    "guide-bottom": {
+      "variants": [
+        {"id": "32040501", "width": 728, "height": 90},
+        {"id": "32040497", "width": 468, "height": 60},
+        {"id": "32040500", "width": 320, "height": 50}
       ]
     }
   }

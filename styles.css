@@ -57,7 +57,7 @@
 .landing-page .footer{font-size:9px;padding-block:17px 21px}
 .landing-page .footer-links{gap:15px}
 .landing-page .ad-placeholder:has(.adsbygoogle[data-ad-status="unfilled"]):not([data-fallback-ready="true"]){display:none}
-@media(min-width:1351px){.landing-layout{grid-template-columns:250px minmax(0,1fr) 250px}}
+@media(min-width:1250px){.landing-layout{grid-template-columns:300px minmax(0,1fr) 160px}}
 @media(max-width:1049px){.landing-layout{display:block;max-width:760px}.landing-page .ad-sidebar{display:none}.landing-core{padding-inline:0}.landing-core h1{font-size:43px}.landing-overview{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}.landing-overview .geology{max-width:300px}.landing-facts p{font-size:12px}.landing-facts h2{font-size:14px}.landing-source-links{font-size:11px}}
 @media(max-width:700px){.landing-page .shell{width:calc(100% - 32px)}.landing-page .masthead{min-height:65px;padding-block:0;flex-wrap:nowrap}.landing-page .masthead nav{order:0;width:auto;margin:0}.landing-page .masthead nav a{padding:8px 0;font-size:10px}.landing-page .site-label{font-size:7px;letter-spacing:.3px;margin-left:0}.landing-core{padding-top:4px}.landing-core h1{font-size:40px;letter-spacing:-1.7px;margin-block:12px}.landing-core .eyebrow{font-size:8px}.landing-lead{font-size:13px;margin-bottom:16px}.landing-overview{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:17px;margin-top:22px;align-items:start}.landing-overview .geology{margin-top:4px}.landing-overview .geology svg{max-height:none}.landing-overview .geology figcaption{font-size:8px;margin:8px 10px 11px}.landing-facts{gap:11px}.landing-facts article{grid-template-columns:1fr;gap:0;padding-top:10px}.landing-fact-number{display:none}.landing-facts h2{font-size:11px;line-height:1.5;margin-bottom:4px}.landing-facts p{font-size:10px;line-height:1.75}.landing-sources{margin-top:20px;padding-top:16px}.landing-sources h2{font-size:14px}.landing-source-links{gap:9px 14px;font-size:10px}.landing-sources p{font-size:10px;margin:10px 0}.landing-guide-link{font-size:10px;gap:11px}.landing-page .ad-billboard.shell{width:100%;margin-top:10px;margin-bottom:16px}.landing-page .ad-billboard-bottom{margin-top:22px}.landing-page .footer{gap:12px;padding-block:17px 20px}.landing-page .footer-links{gap:14px}}
 @media(max-width:600px){.landing-page .masthead nav{display:none}.landing-page .site-label{margin-left:auto}}
@@ -71,4 +71,8 @@
 .ad-secondary-native[hidden]{display:none!important}
 .landing-page .ad-secondary-native{margin-top:0}
 .footer>[data-secondary-privacy-settings]{border:0;background:none;padding:0;color:inherit;font:inherit;text-decoration:underline;text-underline-offset:4px}
+.guide-page .ad-placeholder[data-fallback-ready="true"]{padding-inline:0}
+.sponsored-link-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-block:15px;padding-block:10px;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);font-size:11px;line-height:1.8}
+.sponsored-link-row>span{font-size:8px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted)}
+.sponsored-link-row>a{font-weight:600;text-underline-offset:3px;padding-block:5px}
 @media(max-width:1049px){.landing-page .ad-sidebar[data-fallback-ready="true"]{display:none}}

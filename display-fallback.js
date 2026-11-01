@@ -1,9 +1,15 @@
 import { createSecondaryAdsManager } from './secondary-ads.js';
 import { createSecondaryAdConsent } from './ad-consent.js';
 import { renderAdsterraNative } from './adsterra-native.js';
+import { renderAdsterraBanner } from './adsterra-banner.js';
+import { ADSTERRA_UNITS, isApprovedAdsterraVariant } from './adsterra-units.js';
 
-const NATIVE_ID = '32040685';
-const PLACEMENTS = new Set(['home-top', 'guide-top']);
+const PLACEMENTS = new Set(['home-top', 'home-left', 'home-right', 'home-bottom', 'guide-top', 'guide-bottom']);
+
+function renderAdsterraDisplay(input) {
+  return ADSTERRA_UNITS[input.placement?.id]?.type === 'native'
+    ? renderAdsterraNative(input) : renderAdsterraBanner(input);
+}
 
 export function validateDisplayFallbackConfig(value) {
   if (!value || value.enabled !== true || typeof value.googleEligible !== 'boolean'
@@ -11,9 +17,8 @@ export function validateDisplayFallbackConfig(value) {
     || Array.isArray(value.placements)) return null;
   const entries = Object.entries(value.placements);
   if (!entries.length || entries.some(([key, entry]) => !PLACEMENTS.has(key)
-    || !Array.isArray(entry?.variants) || entry.variants.length !== 1
-    || entry.variants.some(v => v?.id !== NATIVE_ID || v.responsive !== true
-      || !Number.isSafeInteger(v.minWidth) || v.minWidth < 250))) return null;
+    || !Array.isArray(entry?.variants) || !entry.variants.length
+    || entry.variants.some(v => !isApprovedAdsterraVariant(v)))) return null;
   return value;
 }
 
@@ -41,7 +46,7 @@ export function waitForGoogleConsentFlow(view, script) {
 export async function initializeDisplayFallback({
   document = globalThis.document, view = globalThis.window,
   fetchConfig = globalThis.fetch, createManager = createSecondaryAdsManager,
-  createConsent = createSecondaryAdConsent, renderer = renderAdsterraNative,
+  createConsent = createSecondaryAdConsent, renderer = renderAdsterraDisplay,
   googleConsentFlow,
 } = {}) {
   if (!['cigeo.fr', 'www.cigeo.fr'].includes(view?.location?.hostname)
@@ -61,8 +66,18 @@ export async function initializeDisplayFallback({
 
   const slots = [...document.querySelectorAll('ins.adsbygoogle')];
   const configured = slots.filter(slot => config.placements[slot.getAttribute('data-ad-placement')]);
-  // The account provides one responsive native unit; never duplicate it on a page.
-  if (configured.length > 1) return null;
+  // Alternatives within one placement are exclusive. Never reuse an approved
+  // unit across two placements in the current document, even across variants.
+  const usedKeys = new Set();
+  const usedUnits = new Set();
+  for (const slot of configured) {
+    const key = slot.getAttribute('data-ad-placement');
+    if (usedKeys.has(key)) return null;
+    usedKeys.add(key);
+    const ids = new Set(config.placements[key].variants.map(variant => variant.id));
+    if ([...ids].some(id => usedUnits.has(id))) return null;
+    ids.forEach(id => usedUnits.add(id));
+  }
   const consent = createConsent({ document });
   let tagStarted = false;
   let disposed = false;
