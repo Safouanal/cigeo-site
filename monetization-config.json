@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "allowedHosts": [
+    "linkvertise.com"
+  ],
+  "links": {
+    "https://www.andra.fr/cigeo": "https://linkvertise.com/access/10483963/cmBvYATqI9Q9",
+    "https://ccomptes.fr/sites/default/files/2025-06/20250604-S2025-0584-Andra.pdf": "https://linkvertise.com/access/10483963/s0EtwLJpGSe3",
+    "https://regulation-oversight.asnr.fr/content/download/205883/file/Avis%20n%C2%B0%202025-AV-012.pdf": "https://linkvertise.com/access/10483963/oKTqsL832NLT",
+    "https://www.debatpublic.fr/sites/default/files/2026-05/Rapport_final_concertation_continue_CIGEO_vf.pdf": "https://linkvertise.com/access/10483963/MpIvWjv1RAPA",
+    "https://recherche-expertise.asnr.fr/sites/default/files/2023-03/IRSN_Debat-Public-Cigeo_Fiche-Reversibilite.pdf": "https://linkvertise.com/access/10483963/jcqh5AnKTJj5",
+    "https://ccomptes.fr/sites/default/files/2025-06/20250604-S2025-0584-Andra.pdf#page=76": "https://linkvertise.com/access/10483963/rZ37ehfVqkpj",
+    "https://reglementation-controle.asnr.fr/content/download/206701/file/2025-AV-016.pdf": "https://linkvertise.com/access/10483963/OieGIb3voO61"
+  }
+}
